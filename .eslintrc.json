@@ -10,7 +10,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "linebreak-style": ["error", "windows"],
-    "no-console": "off"
+    "no-console": "off",
+    "no-underscore-dangle": "off",
+    "import/extensions": "ignorePackages"
   }
 }
