@@ -46,7 +46,7 @@ export default class NotesServices {
     const updatedAt = new Date().toISOString();
 
     if (index === -1) {
-      throw new Error('Catatan gagal diperbarui, ID tidak ditemukan');
+      throw new Error('Gagal memperbarui catatan. ID tidak ditemukan');
     }
 
     this._notes[index] = {
@@ -56,15 +56,13 @@ export default class NotesServices {
       body,
       updatedAt,
     };
-
-    return this._notes[index];
   }
 
   deleteNoteById(id) {
     const index = this._notes.findIndex((note) => note.id === id);
     if (index === -1) {
-      throw new Error('Catatan gagal dihapus, ID tidak ditemukan');
+      throw new Error('Catatan gagal dihapus. ID tidak ditemukan');
     }
-    this._notes.slice(index, 1);
+    this._notes.splice(index, 1);
   }
 }

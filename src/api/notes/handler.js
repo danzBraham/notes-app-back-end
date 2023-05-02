@@ -12,22 +12,22 @@ export default class NotesHandler {
   postNoteHandler(request, h) {
     try {
       const noteId = this._service.addNote(request.payload);
-      const response = h.response({
-        status: 'success',
-        message: 'Catatan berhasil ditambahkan',
-        data: {
-          noteId,
-        },
-      });
-      response.code(201);
-      return response;
+      return h
+        .response({
+          status: 'success',
+          message: 'Catatan berhasil ditambahkan',
+          data: {
+            noteId,
+          },
+        })
+        .code(201);
     } catch (error) {
-      const response = h.response({
-        status: 'fail',
-        message: error.message,
-      });
-      response.code(400);
-      return response;
+      return h
+        .response({
+          status: 'fail',
+          message: error.message,
+        })
+        .code(400);
     }
   }
 
@@ -52,12 +52,12 @@ export default class NotesHandler {
         },
       };
     } catch (error) {
-      const response = h.response({
-        status: 'fail',
-        message: error.message,
-      });
-      response.code(404);
-      return response;
+      return h
+        .response({
+          status: 'fail',
+          message: error.message,
+        })
+        .code(404);
     }
   }
 
@@ -70,12 +70,12 @@ export default class NotesHandler {
         message: 'Catatan berhasil diperbarui',
       };
     } catch (error) {
-      const response = h.response({
-        status: 'fail',
-        message: error.message,
-      });
-      response.code(400);
-      return response;
+      return h
+        .response({
+          status: 'fail',
+          message: error.message,
+        })
+        .code(400);
     }
   }
 
@@ -88,12 +88,12 @@ export default class NotesHandler {
         message: 'Catatan berhasil dihapus',
       };
     } catch (error) {
-      const response = h.response({
-        status: 'fail',
-        message: error.message,
-      });
-      response.code(404);
-      return response;
+      return h
+        .response({
+          status: 'fail',
+          message: error.message,
+        })
+        .code(404);
     }
   }
 }
