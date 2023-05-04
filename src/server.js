@@ -1,4 +1,4 @@
-import Hapi from 'hapi';
+import Hapi from '@hapi/hapi';
 import notes from './api/notes/index.js';
 import NotesServices from './services/inMemory/NotesService.js';
 import NotesValidator from './validator/notes/index.js';
