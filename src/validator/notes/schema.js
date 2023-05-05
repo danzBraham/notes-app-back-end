@@ -1,4 +1,4 @@
-import Joi from 'joi';
+const Joi = require('joi');
 
 const NotePayloadSchema = Joi.object({
   title: Joi.string().required(),
@@ -6,4 +6,4 @@ const NotePayloadSchema = Joi.object({
   body: Joi.string().required(),
 });
 
-export default NotePayloadSchema;
+module.exports = NotePayloadSchema;

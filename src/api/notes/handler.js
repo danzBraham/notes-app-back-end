@@ -1,6 +1,6 @@
-import ClientError from '../../exceptions/ClientError.js';
+const ClientError = require('../../exceptions/ClientError');
 
-export default class NotesHandler {
+class NotesHandler {
   constructor(service, validator) {
     this._service = service;
     this._validator = validator;
@@ -142,3 +142,5 @@ export default class NotesHandler {
     }
   }
 }
+
+module.exports = { NotesHandler };

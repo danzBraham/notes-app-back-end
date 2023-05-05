@@ -2,3 +2,5 @@ node_modules
 notes-api-webserver.pem
 notes-api-test.postman_collection.json
 notes-api-test.postman_environment.json
+.env
+.prod.env

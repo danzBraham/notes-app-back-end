@@ -7,11 +7,10 @@
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "script"
   },
   "rules": {
     "no-console": "off",
-    "no-underscore-dangle": "off",
-    "import/extensions": "ignorePackages"
+    "no-underscore-dangle": "off"
   }
 }
