@@ -23,7 +23,6 @@
   "dependencies": {
     "@hapi/hapi": "^20.2.2",
     "dotenv": "^16.0.3",
-    "hapi": "^18.1.0",
     "joi": "^17.9.2",
     "nanoid": "^3.1.20",
     "node-pg-migrate": "^6.2.2",
