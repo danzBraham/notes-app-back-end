@@ -1,7 +1,7 @@
-export const up = async (pgm) => {
-  await pgm.createTable('notes', {
+exports.up = (pgm) => {
+  pgm.createTable('notes', {
     id: {
-      type: 'varchar(50)',
+      type: 'VARCHAR(50)',
       primaryKey: true,
     },
     title: {
@@ -27,6 +27,6 @@ export const up = async (pgm) => {
   });
 };
 
-export const down = async (pgm) => {
-  await pgm.dropTable('notes');
+exports.down = (pgm) => {
+  pgm.dropTable('notes');
 };
