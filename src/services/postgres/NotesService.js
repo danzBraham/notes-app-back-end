@@ -1,8 +1,6 @@
 const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
-const InvariantError = require('../../exceptions/InvariantError');
-const NotFoundError = require('../../exceptions/NotFoundError');
-const mapDBToModel = require('../../utils/index');
+const { InvariantError, NotFoundError } = require('../../exceptions');
 
 class NotesService {
   constructor() {
@@ -10,7 +8,7 @@ class NotesService {
   }
 
   async addNote({ title, tags, body }) {
-    const id = nanoid(16);
+    const id = `note-${nanoid(16)}`;
     const createdAt = new Date().toISOString();
     const updatedAt = createdAt;
 
@@ -28,22 +26,22 @@ class NotesService {
   }
 
   async getNotes() {
-    const result = await this._pool.query('SELECT * FROM notes');
-    return result.rows.map(mapDBToModel);
+    const result = await this._pool.query('SELECT *, created_at AS createdAt, updated_at AS updatedAt FROM notes');
+    return result.rows;
   }
 
   async getNoteById(id) {
     const query = {
-      text: 'SELECT * FROM notes WHERE id = $1',
+      text: 'SELECT *, created_at AS createdAt, updated_at AS updatedAt FROM notes WHERE id = $1',
       values: [id],
     };
     const result = await this._pool.query(query);
 
-    if (!result.rows.length) {
+    if (!result.rowCount) {
       throw new NotFoundError('Catatan tidak ditemukan');
     }
 
-    return result.rows.map(mapDBToModel)[0];
+    return result.rows[0];
   }
 
   async editNoteById(id, { title, tags, body }) {
@@ -55,7 +53,7 @@ class NotesService {
     };
     const result = await this._pool.query(query);
 
-    if (!result.rows.length) {
+    if (!result.rowCount) {
       throw new NotFoundError('Gagal memperbarui catatan. ID tidak ditemukan');
     }
   }
@@ -67,7 +65,7 @@ class NotesService {
     };
     const result = await this._pool.query(query);
 
-    if (!result.rows.length) {
+    if (!result.rowCount) {
       throw new NotFoundError('Catatan gagal dihapus. ID tidak ditemukan');
     }
   }
