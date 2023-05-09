@@ -19,6 +19,7 @@
         "optionalDependencies": false,
         "peerDependencies": false
       }
-    ]
+    ],
+    "comma-dangle": "off"
   }
 }

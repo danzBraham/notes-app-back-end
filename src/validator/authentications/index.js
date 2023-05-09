@@ -5,7 +5,7 @@ const {
   DeleteAuthenticationPayloadSchema,
 } = require('./schema');
 
-const AuthenticatonsValidator = {
+const AuthenticationsValidator = {
   validatePostAuthenticationPayload: (payload) => {
     const validationResult = PostAuthenticationPayloadSchema.validate(payload);
     if (validationResult.error) {
@@ -26,4 +26,4 @@ const AuthenticatonsValidator = {
   },
 };
 
-module.exports = AuthenticatonsValidator;
+module.exports = AuthenticationsValidator;

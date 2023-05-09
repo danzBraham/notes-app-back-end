@@ -52,9 +52,9 @@ class UsersService {
     return result.rows[0];
   }
 
-  async verifyUsersCredentials(username, password) {
+  async verifyUserCredential(username, password) {
     const query = {
-      text: 'SELECT id, password WHERE username = $1',
+      text: 'SELECT id, password FROM users WHERE username = $1',
       values: [username],
     };
     const result = await this._pool.query(query);
