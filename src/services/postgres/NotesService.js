@@ -1,5 +1,6 @@
 const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
+const mapDBToModel = require('../../utils');
 const { InvariantError, NotFoundError, AuthorizationError } = require('../../exceptions');
 
 class NotesService {
@@ -27,16 +28,16 @@ class NotesService {
 
   async getNotes(owner) {
     const query = {
-      text: 'SELECT *, created_at AS createdAt, updated_at AS updatedAt FROM notes WHERE owner = $1',
+      text: 'SELECT * FROM notes WHERE owner = $1',
       values: [owner],
     };
     const result = await this._pool.query(query);
-    return result.rows;
+    return result.rows.map(mapDBToModel);
   }
 
   async getNoteById(id) {
     const query = {
-      text: 'SELECT *, created_at AS createdAt, updated_at AS updatedAt FROM notes WHERE id = $1',
+      text: 'SELECT * FROM notes WHERE id = $1',
       values: [id],
     };
     const result = await this._pool.query(query);
@@ -45,7 +46,7 @@ class NotesService {
       throw new NotFoundError('Catatan tidak ditemukan');
     }
 
-    return result.rows[0];
+    return result.rows.map(mapDBToModel)[0];
   }
 
   async editNoteById(id, { title, tags, body }) {
