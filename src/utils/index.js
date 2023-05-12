@@ -7,6 +7,7 @@ const mapDBToModel = ({
   body,
   created_at,
   updated_at,
+  owner
 }) => ({
   id,
   title,
@@ -14,6 +15,7 @@ const mapDBToModel = ({
   body,
   createdAt: created_at,
   updatedAt: updated_at,
+  owner
 });
 
 module.exports = mapDBToModel;
