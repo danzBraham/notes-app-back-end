@@ -14,7 +14,7 @@ class ExportsHandler {
     this._service.sendMessage('export:notes', JSON.stringify(message));
 
     return h
-      .repsonse({
+      .response({
         status: 'success',
         message: 'Permintaan Anda dalam antrean',
       })
