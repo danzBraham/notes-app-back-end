@@ -21,11 +21,11 @@
     "nodemon": "^2.0.19"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.332.0",
     "@hapi/hapi": "^20.2.2",
     "@hapi/inert": "^7.1.0",
     "@hapi/jwt": "^3.2.0",
     "amqplib": "^0.10.3",
-    "aws-sdk": "^2.1378.0",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "joi": "^17.9.2",
